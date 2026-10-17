@@ -1,0 +1,65 @@
+{
+  "name": "Assignment",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Assignment or task name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional notes about the assignment"
+    },
+    "subject": {
+      "type": "string",
+      "description": "Subject or course the assignment belongs to"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Deadline for the assignment"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "default": "medium"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "in_progress",
+        "completed"
+      ],
+      "default": "pending"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Set when the assignment is marked completed"
+    }
+  },
+  "required": [
+    "title",
+    "subject",
+    "due_date"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}
